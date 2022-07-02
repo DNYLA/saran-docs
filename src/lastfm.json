@@ -1,0 +1,55 @@
+{
+  "name": "lastfm",
+  "description": "Last.fm intergration",
+  "commands": [
+    {
+      "name": "lastfm set",
+      "description": "Bind your last fm username",
+      "aliases": [],
+      "arguments": ["username"],
+      "example": ["lastfm set Lamar"]
+    },
+    {
+      "name": "lastfm tag",
+      "description": "Set a custom nowplaying command",
+      "aliases": ["t"],
+      "arguments": ["tag", "test"],
+      "example": ["lastfm set LamarFM"]
+    },
+    {
+      "name": "lastfm update",
+      "description": "Update Last.fm data",
+      "aliases": [],
+      "arguments": [],
+      "example": []
+    },
+    {
+      "name": "nowplaying",
+      "description": "Displays the current track your are listening to.",
+      "aliases": ["np", "fm"],
+      "arguments": [],
+      "example": []
+    },
+    {
+      "name": "lastfm plays",
+      "description": "View your plays for an artist.",
+      "aliases": ["p"],
+      "arguments": ["Artist Name (optional)"],
+      "example": ["lastfm plays", "lastfm plays Roddy Ricch"]
+    },
+    {
+      "name": "nowplaying",
+      "description": "Displays the current track your are listening to.",
+      "aliases": ["np", "fm"],
+      "arguments": [],
+      "example": []
+    },
+    {
+      "name": "nowplaying",
+      "description": "Displays the current track your are listening to.",
+      "aliases": ["np", "fm"],
+      "arguments": [],
+      "example": []
+    }
+  ]
+}
