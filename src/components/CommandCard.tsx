@@ -56,7 +56,7 @@ export default function CommandCard({ command }: CommandCardProps) {
         <chakra.span
           color="brand.800"
           _dark={{
-            color: 'brand.900',
+            color: 'brand.800',
           }}
           px={3}
           py={1}
