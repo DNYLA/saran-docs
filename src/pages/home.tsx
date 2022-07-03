@@ -17,10 +17,10 @@ export default function Home() {
           <Link color="teal.500" to="/commands">
             Commands
           </Link>
-          <Link color="teal.500" to="/docs">
+          <Link color="teal.500" to="/">
             Docs
           </Link>
-          <Link color="teal.500" to="/invite">
+          <Link color="teal.500" to="/">
             Invite
           </Link>
           <Link color="teal.500" to="/">

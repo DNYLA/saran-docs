@@ -38,18 +38,110 @@
       "example": ["lastfm plays", "lastfm plays Roddy Ricch"]
     },
     {
-      "name": "nowplaying",
-      "description": "Displays the current track your are listening to.",
-      "aliases": ["np", "fm"],
-      "arguments": [],
-      "example": []
+      "name": "lastfm playstrack",
+      "description": "View your plays for a track.",
+      "aliases": ["playst", "tp", "pt"],
+      "arguments": ["Track name (optional)", "Artist name (optional)"],
+      "example": [
+        "lastfm playst",
+        "lastfm playst Nevada",
+        "lastfm tp Die Young | Roddy Ricch"
+      ]
     },
     {
-      "name": "nowplaying",
-      "description": "Displays the current track your are listening to.",
-      "aliases": ["np", "fm"],
-      "arguments": [],
-      "example": []
+      "name": "lastfm playsalbum",
+      "description": "View your plays for an album.",
+      "aliases": ["playsa", "ap", "pa"],
+      "arguments": ["Album name (optional)"],
+      "example": ["lastfm playsalbum", "lastfm playsa Feed tha Streets"]
+    },
+    {
+      "name": "lastfm topartists",
+      "description": "View your top ten artists over a period.",
+      "aliases": ["tar"],
+      "arguments": ["period (default overall)"],
+      "example": [
+        "lastfm topartists",
+        "lastfm tar 7d",
+        "lastfm tar 30d",
+        "lastfm tar 1y"
+      ]
+    },
+    {
+      "name": "lastfm topalbums",
+      "description": "View your top ten albums over a period.",
+      "aliases": ["tta"],
+      "arguments": ["period (default overall)"],
+      "example": [
+        "lastfm topalbums",
+        "lastfm tta 1w",
+        "lastfm tta 1m",
+        "lastfm tta 12m"
+      ]
+    },
+    {
+      "name": "lastfm topalbums",
+      "description": "View your top ten tracks over a period.",
+      "aliases": ["ttt"],
+      "arguments": ["period (default overall)"],
+      "example": ["lastfm toptracks", "lastfm ttt 3m", "lastfm ttt 6m"]
+    },
+    {
+      "name": "lastfm collage",
+      "description": "View a collage for your most listend albums over a period.",
+      "aliases": ["col"],
+      "arguments": ["period (default overall)"],
+      "example": ["lastfm collage", "lf col 7d", "lf col 1y"]
+    },
+    {
+      "name": "lastfm whoknows",
+      "description": "View top listeners for an artist.",
+      "aliases": ["wk"],
+      "arguments": ["Artist name (optional)"],
+      "example": ["lastfm whoknows", "lf wk A$AP Rocky"]
+    },
+    {
+      "name": "lastfm whoknowsalbum",
+      "description": "View top listeners for an album.",
+      "aliases": ["wka"],
+      "arguments": ["Album name (optional)"],
+      "example": ["lastfm whoknowsalbum", "lf wka AI YoungBoy"]
+    },
+    {
+      "name": "lastfm whoknowstrack",
+      "description": "View top listeners for a track.",
+      "aliases": ["wkt"],
+      "arguments": ["Track name (optional)", "Artist Name (optional)"],
+      "example": [
+        "lastfm whoknowstrack",
+        "lf wkt Panoramic",
+        "lf wkt Nevada | YoungBoy Never Broke Again"
+      ]
+    },
+    {
+      "name": "lastfm globalwhoknows",
+      "description": "View global top listeners for an artist.",
+      "aliases": ["gwk"],
+      "arguments": ["Artist name (optional)"],
+      "example": ["lastfm globalwhoknows", "lf gwk Kay Flock"]
+    },
+    {
+      "name": "lastfm globalwhoknowsalbum",
+      "description": "View global top listeners for an album.",
+      "aliases": ["gwka"],
+      "arguments": ["Album name (optional)"],
+      "example": ["lastfm globalwhoknowsalbum", "lf gwka Wunna"]
+    },
+    {
+      "name": "lastfm globalwhoknowstrack",
+      "description": "View global top listeners for a track.",
+      "aliases": ["gwkt"],
+      "arguments": ["Track name (optional)", "Artist Name (optional)"],
+      "example": [
+        "lastfm globalwhoknowstrack",
+        "lf gwkt Hawk Em",
+        "lf gwkt Intro | Loski"
+      ]
     }
   ]
 }
