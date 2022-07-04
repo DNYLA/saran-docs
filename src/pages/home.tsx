@@ -20,6 +20,9 @@ export default function Home() {
           <Link color="teal.500" to="/">
             Docs
           </Link>
+          <Link color="teal.500" to="/embeds">
+            Embeds
+          </Link>
           <Link color="teal.500" to="/">
             Invite
           </Link>
