@@ -1,7 +1,7 @@
 import { Box, Flex, Image, Text } from '@chakra-ui/react';
 import React from 'react';
 
-type EmbedDetails = {
+export type EmbedDetails = {
   author: string;
   authorIcon: string;
   authorUrl: string;
@@ -27,19 +27,24 @@ export default function Embed({ details }: EmbedProps) {
       maxW={520}
     >
       {/* Author */}
-      <Flex mt={'8px'} as="a" href={details.authorUrl} target={'_blank'}>
-        <Image
-          width={'24px'}
-          height={'24px'}
-          mr={'8px'}
-          borderRadius={'full'}
-          src={details.authorIcon}
-          boxSizing={'border-box'}
-        />
-        <Text fontSize={'0.875rem'} fontWeight={'600'}>
-          {details.author}
-        </Text>
-      </Flex>
+      {(details.author || details.authorIcon) && (
+        <Flex mt={'8px'} as="a" href={details.authorUrl} target={'_blank'}>
+          <Image
+            width={'24px'}
+            height={'24px'}
+            mr={'8px'}
+            borderRadius={'full'}
+            src={details.authorIcon}
+            boxSizing={'border-box'}
+            fallbackSrc={
+              'https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg'
+            }
+          />
+          <Text fontSize={'0.875rem'} fontWeight={'600'}>
+            {details.author}
+          </Text>
+        </Flex>
+      )}
       {/* Title */}
       <Box mt={'8px'}>
         <Text
@@ -73,18 +78,23 @@ export default function Embed({ details }: EmbedProps) {
       {/* Fields */}
       {/* <Box>Fields</Box> */}
 
-      {/* Fields */}
-      <Box cursor={'pointer'} maxW={'80px'} maxH={'80px'}>
-        <Image
-          width={'80px'}
-          height={'80px'}
-          position={'absolute'}
-          top={15}
-          right={5}
-          borderRadius={'3px'}
-          src="https://lastfm.freetls.fastly.net/i/u/300x300/b99fa4b5cf3a2cd7974ffd139c7250fc.jpg"
-        ></Image>
-      </Box>
+      {/* Thumbnails */}
+      {details.thumbnail && (
+        <Box cursor={'pointer'} maxW={'80px'} maxH={'80px'}>
+          <Image
+            width={'80px'}
+            height={'80px'}
+            position={'absolute'}
+            top={15}
+            right={5}
+            borderRadius={'3px'}
+            src={details.thumbnail}
+            fallbackSrc={
+              'https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg'
+            }
+          ></Image>
+        </Box>
+      )}
     </Box>
   );
 }

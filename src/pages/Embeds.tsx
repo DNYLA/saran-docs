@@ -1,6 +1,15 @@
-import { Box, Container, Flex, Icon, Image, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Center,
+  Container,
+  Flex,
+  Icon,
+  Image,
+  Text,
+} from '@chakra-ui/react';
 import React, { useState } from 'react';
 import Embed from '../components/Embed';
+import EmbedForm from '../components/EmbedForm';
 
 export default function Embeds() {
   const [details, setDetails] = useState({
@@ -18,9 +27,14 @@ export default function Embeds() {
       'https://lastfm.freetls.fastly.net/i/u/300x300/b99fa4b5cf3a2cd7974ffd139c7250fc.jpg',
   });
   return (
-    <Container>
-      Embeds
-      <Embed details={details} />
-    </Container>
+    <>
+      <Center m={5}>
+        {/* <Container maxW={'md'}> */}
+        {/* <Embed details={details} /> */}
+        <EmbedForm details={details} setDetails={setDetails} />
+        {/* </Container> */}
+        {/* <EmbedForm details={details} setDetails={setDetails} /> */}
+      </Center>
+    </>
   );
 }
