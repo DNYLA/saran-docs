@@ -23,9 +23,14 @@ export default function Home() {
           <Link color="teal.500" to="/embeds">
             Embeds
           </Link>
-          <Link color="teal.500" to="/">
+          <a
+            color="teal.500"
+            target={'_blank'}
+            rel={'noreferrer'}
+            href="https://discord.com/api/oauth2/authorize?client_id=987090969038061608&permissions=8&scope=bot"
+          >
             Invite
-          </Link>
+          </a>
           <Link color="teal.500" to="/">
             Discord
           </Link>
