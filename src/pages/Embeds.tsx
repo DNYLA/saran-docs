@@ -28,6 +28,7 @@ export default function Embeds() {
       text: 'Total Scrobbles: {total_scrobbles} ∙ Global Plays: {global_scrobbles}',
     },
     fields: [],
+    color: 'FFFFFF',
   });
   return (
     <>

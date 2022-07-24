@@ -22,9 +22,10 @@ import {
   IconButton,
   Checkbox,
 } from '@chakra-ui/react';
+import { ColorPicker } from 'chakra-color-picker';
 import React, { useState } from 'react';
+import { SketchPicker } from 'react-color';
 import Embed, { EmbedDetails, EmbedFieldData } from './Embed';
-
 interface EmbedFormProps {
   details: EmbedDetails;
   setDetails: (value: EmbedDetails) => void;
@@ -179,6 +180,10 @@ export default function EmbedForm({ details, setDetails }: EmbedFormProps) {
     setDetails(_details);
   };
 
+  const handleColorChange = ({ hex }: any) => {
+    setDetails({ ...details, color: hex });
+  };
+
   return (
     <Box
       bg="#edf3f8"
@@ -232,6 +237,23 @@ export default function EmbedForm({ details, setDetails }: EmbedFormProps) {
                 spacing={6}
               >
                 <SimpleGrid columns={6} spacing={6}>
+                  <FormControl as={GridItem} colSpan={[6, 6]}>
+                    <FormLabel
+                      htmlFor="email_address"
+                      fontSize="sm"
+                      fontWeight="md"
+                      color="gray.700"
+                      _dark={{
+                        color: 'gray.50',
+                      }}
+                    >
+                      Colour
+                    </FormLabel>
+                    <SketchPicker
+                      color={details.color}
+                      onChangeComplete={handleColorChange}
+                    />
+                  </FormControl>
                   <FormControl as={GridItem} colSpan={[6, 2]}>
                     <FormLabel
                       htmlFor="first_name"

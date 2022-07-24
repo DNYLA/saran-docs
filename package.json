@@ -14,8 +14,10 @@
     "@types/node": "^12.20.55",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
+    "chakra-color-picker": "^0.0.6",
     "framer-motion": "^6.3.16",
     "react": "^18.2.0",
+    "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
     "react-icons": "^3.11.0",
     "react-router-dom": "^6.3.0",
@@ -43,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-color": "^3.0.6"
   }
 }

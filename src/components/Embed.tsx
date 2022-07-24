@@ -1,5 +1,6 @@
 import { Box, Flex, Image, Text } from '@chakra-ui/react';
 import React from 'react';
+import { Color } from 'react-color';
 import { ObjectType } from 'typescript';
 
 export interface EmbedFieldData {
@@ -10,7 +11,7 @@ export interface EmbedFieldData {
 
 export type EmbedDetails = {
   author: { name?: string; url?: string; iconURL?: string };
-  color?: string | number;
+  color?: Color;
   fields?: EmbedFieldData[];
   footer: { text?: string; iconURL?: string };
   description?: string;
@@ -107,7 +108,7 @@ export default function Embed({ details }: EmbedProps) {
       mt="25"
       padding={'.5rem 1rem 1rem .75rem'}
       borderRadius={'4px'}
-      borderLeft={'4px solid red'}
+      borderLeft={`4px solid ${details.color ?? 'red'}`}
       bgColor={'#2f3136'}
       position={'relative'}
       display={'grid'}
