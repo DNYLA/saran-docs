@@ -26,9 +26,12 @@ interface EmbedProps {
 
 export type VariableTypes = {
   username: string;
+  fm_username: string;
   fm_avatar: string;
+  fm_link: string;
   track_name: string;
   track_plays: string;
+  track_image: string;
   artist_name: string;
   artist_plays: string;
   album_name: string;
@@ -56,11 +59,15 @@ export default function Embed({ details }: EmbedProps) {
   };
 
   const json: VariableTypes = {
-    username: 'Jungaal',
+    username: 'Lamar',
+    fm_username: 'Jungaal',
+    fm_link: 'https://www.last.fm/user/jungaal',
     fm_avatar:
       'https://images-ext-1.discordapp.net/external/Vjfy91yCG_Dgguk7VJkbk8mGz3B6WnR3a4Gi6Yh1eh0/https/lastfm.freetls.fastly.net/i/u/avatar170s/a7ff67ef791aaba0c0c97e9c8a97bf04.png',
     track_name: 'Prayers To The Trap God',
     track_plays: '739',
+    track_image:
+      'https://lastfm.freetls.fastly.net/i/u/300x300/b99fa4b5cf3a2cd7974ffd139c7250fc.jpg',
     artist_name: 'Roddy Ricch',
     artist_plays: '12265',
     album_name: 'Please Excuse Me for Being Antisocial',
@@ -74,7 +81,7 @@ export default function Embed({ details }: EmbedProps) {
       text = text.replace('{' + key + '}', json[key as keyof VariableTypes]);
     }
 
-    return (text = text.replace('{username}', json.username));
+    return text;
   };
 
   const renderFields = () => {
@@ -189,7 +196,7 @@ export default function Embed({ details }: EmbedProps) {
             top={15}
             right={5}
             borderRadius={'3px'}
-            src={details.thumbnail}
+            src={parseVariables(details.thumbnail)}
             fallbackSrc={
               'https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg'
             }

@@ -605,7 +605,7 @@ export default function EmbedForm({ details, setDetails }: EmbedFormProps) {
                     {/* <FormHelperText>
                       Brief description for your profile. URLs are hyperlinked.
                     </FormHelperText> */}
-                  </FormControl>{' '}
+                  </FormControl>
                   <FormControl as={GridItem} colSpan={[6, 6]}>
                     <FormLabel
                       htmlFor="country"
@@ -640,42 +640,46 @@ export default function EmbedForm({ details, setDetails }: EmbedFormProps) {
                         });
                       }}
                     />
-                    <FormControl as={GridItem} colSpan={[6, 6]}>
-                      <FormLabel
-                        htmlFor="country"
-                        fontSize="sm"
-                        fontWeight="md"
-                        color="gray.700"
-                        _dark={{
-                          color: 'gray.50',
-                        }}
-                      >
-                        Image URL
-                      </FormLabel>
-                      <Input
-                        type="text"
-                        name="street_address"
-                        id="street_address"
-                        autoComplete="street-address"
-                        mt={1}
-                        focusBorderColor="brand.400"
-                        shadow="sm"
-                        size="sm"
-                        w="full"
-                        rounded="md"
-                        value={details.image}
-                        onChange={(e) => {
-                          setDetails({
-                            ...details,
-                            image: e.target.value,
-                          });
-                        }}
-                      />
-                    </FormControl>
-                    {/* <FormHelperText>
-                      Brief description for your profile. URLs are hyperlinked.
-                    </FormHelperText> */}
+                    <FormHelperText>
+                      Currently not displayed in the embed below.
+                    </FormHelperText>
                   </FormControl>
+                  <FormControl as={GridItem} colSpan={[6, 6]}>
+                    <FormLabel
+                      htmlFor="country"
+                      fontSize="sm"
+                      fontWeight="md"
+                      color="gray.700"
+                      _dark={{
+                        color: 'gray.50',
+                      }}
+                    >
+                      Image URL
+                    </FormLabel>
+                    <Input
+                      type="text"
+                      name="street_address"
+                      id="street_address"
+                      autoComplete="street-address"
+                      mt={1}
+                      focusBorderColor="brand.400"
+                      shadow="sm"
+                      size="sm"
+                      w="full"
+                      rounded="md"
+                      value={details.image}
+                      onChange={(e) => {
+                        setDetails({
+                          ...details,
+                          image: e.target.value,
+                        });
+                      }}
+                    />
+                    <FormHelperText>
+                      Currently not displayed in the embed below.
+                    </FormHelperText>
+                  </FormControl>
+
                   <GridItem colSpan={[3, 6]}>
                     <Embed details={details} />
                   </GridItem>
@@ -785,6 +789,10 @@ function VariableTable() {
     {
       name: 'track_plays',
       description: 'Users total plays for current track playing.',
+    },
+    {
+      name: 'track_image',
+      description: 'Current tracks cover.',
     },
     {
       name: 'artist_name',
