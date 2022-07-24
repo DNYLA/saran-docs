@@ -15,7 +15,7 @@ export default function Embeds() {
   const [details, setDetails] = useState<EmbedDetails>({
     author: {
       name: '{username}',
-      url: 'https://www.last.fm/user/Jungaal',
+      url: '{fm_link}',
       iconURL: '{fm_avatar}',
     },
     title: '',
@@ -23,8 +23,7 @@ export default function Embeds() {
     description: `{track_name} x{track_plays}
     by {artist_name} x{artist_plays}
     on {album_name} x{album_plays}`,
-    thumbnail:
-      'https://lastfm.freetls.fastly.net/i/u/300x300/b99fa4b5cf3a2cd7974ffd139c7250fc.jpg',
+    thumbnail: '{track_image}',
     footer: {
       text: 'Total Scrobbles: {total_scrobbles} ∙ Global Plays: {global_scrobbles}',
     },

@@ -81,6 +81,8 @@ export default function Embed({ details }: EmbedProps) {
       text = text.replace('{' + key + '}', json[key as keyof VariableTypes]);
     }
 
+    console.log(text);
+
     return text;
   };
 
@@ -116,7 +118,7 @@ export default function Embed({ details }: EmbedProps) {
         <Flex
           mt={'8px'}
           as="a"
-          href={details.author.url ?? ''}
+          href={parseText(details.author.url ?? '')}
           target={'_blank'}
         >
           <Image
