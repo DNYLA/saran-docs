@@ -54,6 +54,10 @@ function clean(object: object) {
 }
 
 export default function EmbedForm({ details, setDetails }: EmbedFormProps) {
+  // const copyClipboard = () => {
+  //   navigator.clipboard.writeText()
+  // };
+
   const generateEmbed = () => {
     let _details: Partial<EmbedDetails> = { ...details };
 
@@ -698,7 +702,7 @@ export default function EmbedForm({ details, setDetails }: EmbedFormProps) {
                     shadow: '',
                   }}
                   color={'white'}
-                  onClick={generateEmbed}
+                  isDisabled={true}
                 >
                   Copy
                 </Button>
@@ -765,6 +769,10 @@ function VariableTable() {
     {
       name: 'fm_username',
       description: 'Displays the current users last.fm name',
+    },
+    {
+      name: 'fm_link',
+      description: 'Creates a link to the current users last.fm page.',
     },
     {
       name: 'fm_avatar',
