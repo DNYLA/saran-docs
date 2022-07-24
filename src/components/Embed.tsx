@@ -2,15 +2,23 @@ import { Box, Flex, Image, Text } from '@chakra-ui/react';
 import React from 'react';
 import { ObjectType } from 'typescript';
 
+export interface EmbedFieldData {
+  name: string;
+  value: string;
+  inline?: boolean;
+}
+
 export type EmbedDetails = {
-  author: string;
-  authorIcon: string;
-  authorUrl: string;
-  title: string;
-  titleUrl: string;
-  description: string;
-  thumbnail: string;
-  footer: string;
+  author: { name?: string; url?: string; iconURL?: string };
+  color?: string | number;
+  fields?: EmbedFieldData[];
+  footer: { text?: string; iconURL?: string };
+  description?: string;
+  image?: string;
+  thumbnail?: string;
+  timestamp?: number | Date;
+  title?: string;
+  url?: string;
 };
 interface EmbedProps {
   details: EmbedDetails;
@@ -44,7 +52,6 @@ export default function Embed({ details }: EmbedProps) {
       const item = results[i];
     }
 
-    console.log(results);
     return text;
   };
 
@@ -70,6 +77,22 @@ export default function Embed({ details }: EmbedProps) {
     return (text = text.replace('{username}', json.username));
   };
 
+  const renderFields = () => {
+    if (!details.fields || details.fields.length === 0) return;
+    return details.fields.map((field, i) => {
+      return (
+        <Box lineHeight={'1.125rem'} fontSize={'0.875rem'} minW={0} key={i}>
+          <Box fontWeight={600} mb={'2px'}>
+            {field.name}
+          </Box>
+          <Box fontWeight={400} whiteSpace={'pre-line'}>
+            {field.value}
+          </Box>
+        </Box>
+      );
+    });
+  };
+
   return (
     <Box
       mt="25"
@@ -82,17 +105,22 @@ export default function Embed({ details }: EmbedProps) {
       maxW={520}
     >
       {/* Author */}
-      {(details.author || details.authorIcon) && (
-        <Flex mt={'8px'} as="a" href={details.authorUrl} target={'_blank'}>
+      {details.author && details.author.name && (
+        <Flex
+          mt={'8px'}
+          as="a"
+          href={details.author.url ?? ''}
+          target={'_blank'}
+        >
           <Image
             width={'24px'}
             height={'24px'}
             mr={'8px'}
             borderRadius={'full'}
             src={
-              details.authorIcon === '{fm_avatar}'
+              details.author.iconURL === '{fm_avatar}'
                 ? json.fm_avatar
-                : details.authorIcon
+                : details.author.iconURL
             }
             boxSizing={'border-box'}
             fallbackSrc={
@@ -100,43 +128,53 @@ export default function Embed({ details }: EmbedProps) {
             }
           />
           <Text fontSize={'0.875rem'} fontWeight={'600'}>
-            {parseVariables(details.author)}
+            {parseVariables(details.author.name)}
           </Text>
         </Flex>
       )}
       {/* Title */}
-      <Box mt={'8px'}>
-        <Text
-          as="a"
-          color={'#00aff5'}
-          cursor={'pointer'}
-          fontSize={'1rem'}
-          fontWeight={'600'}
-          href={details.titleUrl}
-          target={'_blank'}
-        >
-          {parseVariables(details.title)}
-        </Text>
-      </Box>
+      {details.title && (
+        <Box mt={'8px'}>
+          <Text
+            as="a"
+            color={'#00aff5'}
+            cursor={'pointer'}
+            fontSize={'1rem'}
+            fontWeight={'600'}
+            href={details.url}
+            target={'_blank'}
+          >
+            {parseVariables(details.title)}
+          </Text>
+        </Box>
+      )}
 
       {/* Description */}
-      <Box
-        mt={'8px'}
-        minW={0}
-        fontSize={'0.875rem'}
-        lineHeight={'1.125rem'}
-        fontWeight={'400'}
-        whiteSpace={'pre-line'}
-      >
-        {/* {parseText(details.description)} */}
-        {parseVariables(details.description)}
+      {details.description && (
+        <Box
+          mt={'8px'}
+          minW={0}
+          fontSize={'0.875rem'}
+          lineHeight={'1.125rem'}
+          fontWeight={'400'}
+          whiteSpace={'pre-line'}
+        >
+          {/* {parseText(details.description)} */}
+          {parseVariables(details.description)}
 
-        {/* <Text whiteSpace={'break-spaces'}>{details.description}</Text> */}
-        {/* {details.description.replace(' ', '&nbsp')} */}
-        {/* <Text as="b">Prayers To The Trap God</Text> x739{'\n'}
+          {/* <Text whiteSpace={'break-spaces'}>{details.description}</Text> */}
+          {/* {details.description.replace(' ', '&nbsp')} */}
+          {/* <Text as="b">Prayers To The Trap God</Text> x739{'\n'}
     by <Text as="b">Roddy Ricch</Text> x12265{'\n'}
     on <Text as="b">Please Excuse Me for Being Antisocial</Text> x2447 */}
-      </Box>
+        </Box>
+      )}
+
+      {details.fields && details.fields?.length > 0 && (
+        <Box display={'grid'} gridGap={'8px'} mt={'8px'}>
+          {renderFields()}
+        </Box>
+      )}
 
       {/* Fields */}
       {/* <Box>Fields</Box> */}
@@ -160,21 +198,23 @@ export default function Embed({ details }: EmbedProps) {
       )}
 
       {/* Description */}
-      <Box
-        mt={'8px'}
-        minW={0}
-        fontSize={'0.75rem'}
-        lineHeight={'1rem'}
-        fontWeight={'500'}
-        whiteSpace={'pre-line'}
-        color={'#dcddde'}
-      >
-        <Text>{parseVariables(details.footer)}</Text>
-        {/* {details.description.replace(' ', '&nbsp')} */}
-        {/* <Text as="b">Prayers To The Trap God</Text> x739{'\n'}
+      {details.footer.text && (
+        <Box
+          mt={'8px'}
+          minW={0}
+          fontSize={'0.75rem'}
+          lineHeight={'1rem'}
+          fontWeight={'500'}
+          whiteSpace={'pre-line'}
+          color={'#dcddde'}
+        >
+          <Text>{parseVariables(details.footer.text)}</Text>
+          {/* {details.description.replace(' ', '&nbsp')} */}
+          {/* <Text as="b">Prayers To The Trap God</Text> x739{'\n'}
     by <Text as="b">Roddy Ricch</Text> x12265{'\n'}
     on <Text as="b">Please Excuse Me for Being Antisocial</Text> x2447 */}
-      </Box>
+        </Box>
+      )}
     </Box>
   );
 }

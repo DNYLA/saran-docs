@@ -106,8 +106,6 @@ export default function CommandCard({ command }: CommandCardProps) {
           >
             Arguments: {command.arguments.length === 0 && <Code>none</Code>}
             {command.arguments.map((arg, i) => {
-              console.log(command.arguments.length);
-
               return (
                 <>
                   <Code>{arg}</Code>

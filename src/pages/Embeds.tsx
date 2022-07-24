@@ -8,23 +8,27 @@ import {
   Text,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import Embed from '../components/Embed';
+import Embed, { EmbedDetails } from '../components/Embed';
 import EmbedForm from '../components/EmbedForm';
 
 export default function Embeds() {
-  const [details, setDetails] = useState({
-    author: '{username}',
-    authorIcon: '{fm_avatar}',
-    authorUrl: 'https://www.last.fm/user/Jungaal',
+  const [details, setDetails] = useState<EmbedDetails>({
+    author: {
+      name: '{username}',
+      url: 'https://www.last.fm/user/Jungaal',
+      iconURL: '{fm_avatar}',
+    },
     title: '',
-    titleUrl: '',
+    url: '',
     description: `{track_name} x{track_plays}
     by {artist_name} x{artist_plays}
     on {album_name} x{album_plays}`,
     thumbnail:
       'https://lastfm.freetls.fastly.net/i/u/300x300/b99fa4b5cf3a2cd7974ffd139c7250fc.jpg',
-    footer:
-      'Total Scrobbles: {total_scrobbles} ∙ Global Plays: {global_scrobbles}',
+    footer: {
+      text: 'Total Scrobbles: {total_scrobbles} ∙ Global Plays: {global_scrobbles}',
+    },
+    fields: [],
   });
   return (
     <>
